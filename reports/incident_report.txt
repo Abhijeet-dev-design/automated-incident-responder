@@ -1,0 +1,5 @@
+--Incident Report Summary--
+Incident_time : 2026-06-22 21:25:10
+Issue_name :[Error] Server Down
+current_status:Resolved
+(-------------------------)

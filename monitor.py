@@ -2,6 +2,7 @@ import os
 import time
 
 from restart_service import restart_application_service
+from report_generator import generate_report
 
 Log_file = "logs/alerts.log"
 
@@ -22,16 +23,20 @@ def monitor_logs():
 
     error_detected = False
 
+    detect_issue =" "
+
     for line in lines:
         if "[error]" in line.lower() and "down"  in line.lower():
             print(f"\n Alert Detected {line.strip()}")
             error_detected = True
+            detect_issue = line.strip()
             break
 
     if error_detected:
         print("Restarting service")
         restart_application_service()
         
+        generate_report(detect_issue,"Resolved")
 
     else:
         print("System is fine and successful able to reach server")
