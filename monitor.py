@@ -1,6 +1,8 @@
 import os
 import time
 
+from restart_service import restart_application_service
+
 Log_file = "logs/alerts.log"
 
 def main():
@@ -28,14 +30,12 @@ def monitor_logs():
 
     if error_detected:
         print("Restarting service")
+        restart_application_service()
+        
 
     else:
         print("System is fine and successful able to reach server")
-        
+       
 
 if __name__ == "__main__":
     main()
-
-
-  
-
