@@ -4,6 +4,7 @@ import time
 from restart_service import restart_application_service
 from report_generator import generate_report
 
+from send_email import send_email_alert
 Log_file = "logs/alerts.log"
 
 def main():
@@ -37,6 +38,8 @@ def monitor_logs():
         restart_application_service()
         
         generate_report(detect_issue,"Resolved")
+        email_subject = f"Resolved:{detect_issue}"
+        send_email_alert(email_subject,"abhixxx.gmail.com")
 
     else:
         print("System is fine and successful able to reach server")
